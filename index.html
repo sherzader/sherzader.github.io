@@ -12,52 +12,128 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Sheri Zada</title>
         <link rel="shortcut icon" href="http://i876.photobucket.com/albums/ab321/zada1591/favicon_16x16_zpsrnoo9ny3.png">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <link rel="stylesheet" href="/resources/demos/style.css">
-
-    <style type="text/css">
-    body {
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    .content {
-        margin-left:auto;
-        margin-right:auto;
-        float:center;
-        clear:both;
-        background-color:rgba(184,184,184,0.7);
-        max-width:300px;
-        padding: 10px;
-        border-radius:20px;
-    }
-    h2 {
-        color:rgb(64,64,64);
-        font-family:Georgia;
-        text-align:center;
-    }
-    .social_p {
-        padding-left:55px;
-    }
-    #accWrapper{
-        width:150px;
-    }
-    </style>
+        <link href='https://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'>
+      <style type="text/css">
+        body {
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          background-size: cover;
+          text-transform: uppercase;
+          font-family: 'Pontano Sans', sans-serif;
+        }
+        .header-content {
+          float: right;
+          width: 200px;
+          background-color: white;
+          /*top: 40%;
+          top: calc(50% - 115px);
+          top: -moz-calc(50% - 115px);
+          top: -webkit-calc(50% - 115px);*/
+          right: 12%;
+          right: calc(50% - 125px);
+          right: -moz-calc(50% - 125px);
+          right: -webkit-calc(50% - 125px);
+          padding: 30px 25px 25px;
+          border-radius: 10px;
+          opacity: .77;
+        }
+        .projects {
+          width: 85%;
+          padding-left: 20px;
+        }
+        .project-content {
+          width: 300px;
+          background-color: white;
+          padding: 30px 25px 25px;
+          border-radius: 10px;
+          opacity: .77;
+        }
+        .project-caption {
+          position: absolute;
+          width: 500px;
+          top: 85px;
+          margin: 0 0 0 400px;
+        }
+        .project-caption-2 {
+          position: absolute;
+          width: 500px;
+          top: 400px;
+          margin: 0 0 0 400px;
+        }
+        .project-caption-3 {
+          position: absolute;
+          width: 500px;
+          top: 700px;
+          margin: 0 0 0 400px;
+        }
+        a {
+          text-decoration: none;
+        }
+        .project-img {
+          width: 400px;
+        }
+      </style>
     </head>
     <body>
-
         <div class = "container">
-            <div class = "content">
-                <h2>SHERI ZADA</h2>
-                <div class="social_p">
-                  <ul>
-                      <p>&#9814;  <a href = "http://entente.io" target = "_blank">Entente</a></p>
-                      <p>&#9816;  <a href = "https://www.linkedin.com/pub/sheri-zada/101/b15/684" target = "_blank">Linkedin</a></p>
-                      <p>&#9813;  <a href = "https://www.facebook.com/shadarezada" target = "_blank">Facebook</a></p>
-                  </ul>
-                </div>
+            <div class="header-content">
+              <h2 style="text-align: center">SHERI ZADA</h2>
+              <div>
+                <ul>
+                  <li><a href = "https://www.github.com/sherzader" target = "_blank">Github</a></li>
+                  <li><a href = "https://www.linkedin.com/pub/sheri-zada/101/b15/684" target = "_blank">Linkedin</a></li>
+                  <li><a href = "http://stackoverflow.com/users/4772334/zader" target = "_blank">Stack Overflow</a></li>
+                  <li><a href = "https://www.facebook.com/shadarezada" target = "_blank">Facebook</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="projects">
+              <h2 style="padding-left: 20px">Project Highlights</h2>
+              <div class="project-content">
+                  <img src="./assets/entente-grab.png" class="project-img" />
+                  <a href = "http://entente.io" target = "_blank">Live</a>
+                  <a href = "https://www.github.com/sherzader/entente" target = "_blank">Code</a>
+                  <div class="project-caption" style="text-transform: lowercase">
+                    <ul>
+                      <li>BCrypt User Authentication to salt and hash passwords for secure database storage</li>
+                      <li>CRUD functionality for groups and their nested resources, events</li>
+                      <li>Joins two schemas to enable users to join/leave a group</li>
+                      <li>Rails backend reduces N+1 PostgreSQL queries to improve time performance of AJAX requests</li>
+                      <li>Sensitive search and Calendar component to filter groups by nested event association’s date</li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="project-content">
+                  <img src="./assets/ski-free-grab.png" class="project-img" />
+                  <a href = "http://sherizada.com/ski-free" target = "_blank">Live</a>
+                  <a href = "https://www.github.com/sherzader/ski-free" target = "_blank">Code</a>
+                  <div class="project-caption-2" style="text-transform: lowercase">
+                    <ul>
+                      <li>Classic 1991 Microsoft game built in JavaScript and Canvas</li>
+                      <li>Game begins upon triggering of keydown handler</li>
+                      <li>Arrow key listeners allow for multiple trajectories</li>
+                      <li>Object collision detection</li>
+                      <li>Three skier sprites for player's different velocities and one for collision</li>
+                      <li>Game Over screen reloads new game</li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="project-content">
+                  <img src="./assets/secretsnowman-grab.png" class="project-img" />
+                  <a href = "http://secret-snowman.herokuapp.com/signup" target = "_blank">Live</a>
+                  <a href = "http://sherizada.com/SecretSnowman" target = "_blank">Code</a>
+                  <div class="project-caption-3" style="text-transform: lowercase">
+                    <ul>
+                      <li>Secret Snowman(Santa) app for my App Academy cohort to celebrate the holidays. ~ 40 users!</li>
+                      <li>Collaborated with a couple of friends to build out this fun idea</li>
+                      <li>Rails app with HTML/CSS styling</li>
+                      <li>Backend validation for allowing current users to only view their own secret snowman match</li>
+                      <li>Inner join table to create secret snowman matches</li>
+                      <li>BCrypt User Authentication to salt and hash passwords for secure database storage</li>
+                      <li>User wish-lists(created with default values in backend) can be edited and viewed by all once logged in</li>
+                    </ul>
+                  </div>
+              </div>
             </div>
         </div>
     </body>
