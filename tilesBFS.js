@@ -30,8 +30,8 @@
         },
     ];
 
-    const rhombusWidth = 50;
-    const rhombusHeight = 50;
+    const rhombusWidth = 50 * window.devicePixelRatio;
+    const rhombusHeight = 50 * window.devicePixelRatio;
     const windowWidth = window.innerHeight * window.devicePixelRatio;
     const windowHeight = window.innerHeight * window.devicePixelRatio;
     const numRhombusRows = Math.ceil(windowHeight / rhombusHeight);
