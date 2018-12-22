@@ -32,7 +32,7 @@
 
     const rhombusWidth = 50;
     const rhombusHeight = 50;
-    const windowWidth = window.outerHeight * window.devicePixelRatio;
+    const windowWidth = window.innerHeight * window.devicePixelRatio;
     const windowHeight = window.innerHeight * window.devicePixelRatio;
     const numRhombusRows = Math.ceil(windowHeight / rhombusHeight);
     const numRhombusCols = Math.ceil(windowWidth / rhombusWidth);
