@@ -2,47 +2,49 @@
     const directions = [
         {
             key: "left",
-            xDir: -1, // left
+            xDir: -1,
             yDir: 0,
             transform: "rotateY(180deg)",
             transformOrigin: "center left",
         },
         {
             key: "up",
-            xDir: 0, // up
+            xDir: 0,
             yDir: -1,
             transform: "rotateX(-180deg)",
             transformOrigin: "top center",
         },
         {
             key: "right",
-            xDir: 1, // right
+            xDir: 1,
             yDir: 0,
             transform: "rotateY(-180deg)",
             transformOrigin: "center right",
         },
         {
             key: "down",
-            xDir: 0, // down
+            xDir: 0,
             yDir: 1,
             transform: "rotateX(180deg)",
             transformOrigin: "bottom center",
         },
     ];
 
-    const rhombusWidth = 50 * window.devicePixelRatio;
-    const rhombusHeight = 50 * window.devicePixelRatio;
-    const windowWidth = window.innerHeight * window.devicePixelRatio;
-    const windowHeight = window.innerHeight * window.devicePixelRatio;
+    const rhombusWidth = 50;
+    const rhombusHeight = 50;
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
     const numRhombusRows = Math.ceil(windowHeight / rhombusHeight);
     const numRhombusCols = Math.ceil(windowWidth / rhombusWidth);
+
     const rectMatrix = [];
+    const totalRhombi = numRhombusRows * numRhombusCols;
+    let animatedRhombi = 0;
 
     const addRhombusElements = () => {
         const main = document.createElement("div");
-        main.classList.add("background-rhombi");
-        // let xOffset = -rhombusWidth;
-        // let xPos = xOffset;
+        main.classList.add("background", "background-rhombi");
+
         for (let y = 0; y < numRhombusRows; y++) {
             rectMatrix.push([]);
             for (let x = 0; x < numRhombusCols; x++) {
@@ -65,12 +67,14 @@
     // "The load event is fired when a resource and its
     // dependent resources have finished loading."
     // - MDN, https://developer.mozilla.org/en-US/docs/Web/Events/load
-    window.addEventListener("load", async e => {
-        await animateRhombi();
-        document.querySelector(".background-rhombi").style.position =
-            "relative";
-        // now you can interact with page
+    window.addEventListener("load", e => {
+        animateRhombi();
     });
+
+    const finishAnimation = () => {
+        document.querySelector(".background-rhombi").remove();
+        resolveDefferred();
+    };
 
     /**
      * Shuffles array in place. ES6 version
@@ -86,14 +90,13 @@
     const animateRhombi = () => {
         return new Promise(async (resolve, reject) => {
             const { x, y } = getCenterRhombus();
-            let queue = [[x, y]];
+            let queue = [[x, y, directions[0]]];
             while (queue.length) {
-                const [currX, currY] = queue.pop();
+                const [currX, currY, directionToGo] = queue.pop();
                 const rhombus = rectMatrix[currY][currX];
                 if (rhombus.dataset.hasVisited) {
                     continue;
                 }
-                const directionToGo = chooseDirection(currX, currY);
                 moveInDirection(directionToGo, currX, currY);
                 await takeABreath();
 
@@ -103,30 +106,17 @@
                     const newX = currX + xDir;
                     const newY = currY + yDir;
                     if (isValidMove(newX, newY)) {
-                        queue.unshift([newX, newY]);
+                        queue.unshift([newX, newY, dir]);
                     }
                 }
                 rhombus.dataset.hasVisited = true;
-                // rhombus.style.visibility = "hidden";
-                queue = shuffle(queue);
+                // uncomment following to increase entropy
+                // queue = shuffle(queue);
             }
             resolve();
         });
     };
-    const chooseDirection = (x, y) => {
-        for (dir of directions) {
-            const { xDir, yDir } = dir;
-            const newX = x + xDir;
-            const newY = y + yDir;
-            if (
-                isValidMove(newX, newY) &&
-                !rectMatrix[newY][newX].dataset.hasVisited
-            ) {
-                return dir;
-            }
-        }
-        return directions[0];
-    };
+
     /**
      * takeABreak is necessary to see the css transforms happening.
      * Another way is to wrap transformRhombus in a similar Promise.
@@ -151,15 +141,18 @@
         transformRhombus(rhombus, transform, transformOrigin);
     };
 
-    const transformRhombus = (rhombus, transform, transformOrigin) => {
-        const promise = new Promise((resolve, reject) => {
+    const transformRhombus = async (rhombus, transform, transformOrigin) => {
+        await new Promise((resolve, reject) => {
             rhombus.style.zIndex = "1";
             rhombus.style.transform = transform;
             rhombus.style.transformOrigin = transformOrigin;
             window.setTimeout(resolve, 1000);
         });
-        promise.then(() => (rhombus.style.visibility = "hidden"));
-        return promise;
+        rhombus.style.opacity = "0"; // hide just transformed rhombus
+        animatedRhombi++;
+        if (animatedRhombi === totalRhombi) {
+            finishAnimation();
+        }
     };
 
     const isValidMove = (newX, newY) => {

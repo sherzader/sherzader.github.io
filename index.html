@@ -1,11 +1,35 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,
+            user-scalable=no">
         <link rel="stylesheet" type="text/css" href="index.css">
         <link href="https://fonts.googleapis.com/css?family=Nunito"
             rel="stylesheet">
     </head>
     <body>
+        <nav>
+            <a href="./index.html">Home</a>
+            <div class="border"></div>
+            <a href="/">Blog</a>
+            <div class="border"></div>
+            <a href="/">Photos</a>
+            <div class="border"></div>
+            <a href="./portfolio.html">Portfolio</a>
+        </nav>
+        <script>
+            let resolveDefferred, rejectDefferred;
+            const defferred = new Promise((resolve, reject) => {
+                resolveDefferred = resolve;
+                rejectDefferred = reject;
+            })
+            defferred.then(() => {
+                // load next animation
+                const spiralingTiles = document.createElement("script");
+                spiralingTiles.src = "./spiralingTiles.js";
+                document.body.appendChild(spiralingTiles);
+            });
+        </script>
         <script src="tilesBFS.js"></script>
     </body>
 </html>

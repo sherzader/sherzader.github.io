@@ -2,17 +2,27 @@ body {
     margin: 0;
     font-family: "Nunito", sans-serif;
 }
-.background-rhombi {
+.background {
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0;
-    perspective: 800px; /** for css 3d transform **/
+    perspective: 600px; /** for css 3d transform **/
 }
-.rect {
+.background-rhombi {
+    top: 0;
+}
+.background-spiral-rhombi {
+    opacity: 0.5;
+    perspective: 600px; /** for css 3d transform **/
+}
+.background-spiral-rhombi > .rect {
+    position: absolute;
+    transition: all 500ms;
+}
+.background-rhombi > .rect {
     border: 1px solid black;
     position: absolute;
-    transition: transform 1000ms;
+    transition: all 1000ms;
 }
 .rect:nth-child(n) {
     background-color: green;
