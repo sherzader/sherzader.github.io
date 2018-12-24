@@ -6,17 +6,68 @@
         <link rel="stylesheet" type="text/css" href="index.css">
         <link href="https://fonts.googleapis.com/css?family=Nunito"
             rel="stylesheet">
+        <title>Sheri Zada</title>
     </head>
     <body>
         <nav>
-            <a href="./index.html">Home</a>
             <div class="border"></div>
-            <a href="/">Blog</a>
+            <a href="#" class="home">Home</a>
             <div class="border"></div>
-            <a href="/">Photos</a>
+            <a href="#" class="blog">Blog</a>
             <div class="border"></div>
-            <a href="./portfolio.html">Portfolio</a>
+            <a href="#" class="portfolio">Portfolio</a>
+            <div class="border"></div>
         </nav>
+        <main>
+            <article class="home">
+                <p>
+                    You've made it. You have made it to the most professional
+                    web
+                    page
+                    on the internet. How does it feel?</p>
+            </article>
+            <article class="blog">
+                <span>Sunday 12/23/2018</span>
+                <p>
+                    Where we're going, we don't need blogs.</p>
+            </article>
+            <article class="portfolio">
+                <a href="https://sherzader.github.io/ski-free">Care to play a
+                    game?</a>
+                <a href="sheri-zada_resume.pdf" target="_blank" download>
+                    Download my resume
+                </a>
+            </article>
+        </main>
+        <script>
+            const navigate = (e) => {
+                document.querySelectorAll("article").forEach(element => {
+                    element.style.display = "none";
+                });
+                switch (e.target.innerText) {
+                    case "Home":
+                        document.querySelector("article.home").style.display = "";
+                        break;
+                    case "Blog":
+                        document.querySelector("article.blog").style.display = "";
+                        break;
+                    case "Portfolio":
+                        document.querySelector("article.portfolio").style.display = "";
+                        break;
+                    default:
+                        document.querySelector("article.home").style.display = "";
+                }
+            }
+            document.querySelectorAll("nav a").forEach(element => {
+                element.addEventListener("click", navigate)
+            });
+            document.querySelectorAll("article").forEach(element => {
+                if (!element.classList.contains("home")) {
+                    element.style.display = "none";
+                }
+            })
+
+        </script>
         <script>
             let resolveDefferred, rejectDefferred;
             const defferred = new Promise((resolve, reject) => {
