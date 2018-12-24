@@ -1,6 +1,4 @@
 (function() {
-    const main = document.createElement("div");
-    main.classList.add("background-rhombi");
     const rhombusWidth = 50;
     const rhombusHeight = 50;
     const windowWidth = window.innerWidth;
@@ -83,7 +81,8 @@
                 x = newX;
                 y = newY;
             } catch (e) {
-                console.error(e);
+                // shhh
+                document.querySelector(".background").remove();
                 return;
             }
             // increment indices to keep track of where you are
@@ -96,9 +95,7 @@
         }
     };
     const moveInDirection = async (direction, cycle, x, y, rhombus) => {
-        const { xDir, yDir, transform, transformOrigin } = directions[
-            direction
-        ];
+        let { xDir, yDir, transform, transformOrigin } = directions[direction];
         let newX = x;
         let newY = y;
 
@@ -106,15 +103,41 @@
             newX += xDir;
             newY += yDir;
             if (!isValidMove(newX, newY)) {
-                return;
+                const betterDir = findValidMove(newX - xDir, newY - yDir);
+                if (!betterDir) return;
+                newX = betterDir.newX;
+                newY = betterDir.newY;
+                transform = betterDir.transform;
+                transformOrigin = betterDir.transformOrigin;
             }
 
             rhombus = rectMatrix[newY][newX];
+            rhombus.dataset.hasVisited = true;
 
             await transformRhombus(rhombus, transform, transformOrigin);
         }
 
         return { newX, newY };
+    };
+    /**
+     * Finds the first available spot to move to.
+     * Needs to be smarter than "first available" in order to not run out of moves early.
+     * @param {number} x
+     * @param {number} y
+     * @returns {object}
+     */
+    const findValidMove = (x, y) => {
+        for (dir of directions) {
+            const { xDir, yDir, transform, transformOrigin } = dir;
+            if (isValidMove(x + xDir, y + yDir)) {
+                return {
+                    newX: x + xDir,
+                    newY: y + yDir,
+                    transform,
+                    transformOrigin,
+                };
+            }
+        }
     };
     const transformRhombus = async (rhombus, transform, transformOrigin) => {
         await new Promise((resolve, reject) => {
@@ -130,7 +153,8 @@
             newX >= 0 &&
             newX <= numRhombusCols - 1 &&
             newY >= 0 &&
-            newY <= numRhombusRows - 1
+            newY <= numRhombusRows - 1 &&
+            !rectMatrix[newY][newX].dataset.hasVisited
         );
     };
     const getCenterRhombus = () => {
