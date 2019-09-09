@@ -117,3 +117,19 @@ article {
         background-position: 0% 50%;
     }
 }
+
+h1.name::after {
+    width: 20px;
+    height: 40px;
+    background-color: blue;
+    animation-name: blink;
+    animation-duration: 800ms;
+    animation-iteration-count: infinite;
+    opacity: 1;
+    content: open-quote;
+    color: transparent;
+}
+@keyframes blink {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
