@@ -68,14 +68,20 @@ nav > a:hover {
     opacity: 0.5;
 }
 
+main {
+    position: absolute;
+    transform: translate(60%, 0%);
+}
 article {
-    max-width: 574px;
+    height: 150px;
+    width: 574px;
     margin: 10px auto;
     padding: 20px;
     border: 1px solid beige;
     box-shadow: 20px 16px #f3f3ea;
     display: flex;
     flex-direction: column;
+    background-color: white;
 }
 
 @-webkit-keyframes hoverAni {
