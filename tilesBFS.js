@@ -43,7 +43,7 @@
 
     const addRhombusElements = () => {
         const main = document.createElement("div");
-        main.classList.add("background", "background-rhombi");
+        main.classList.add("tileContainer", "background-bfs-rhombi");
 
         for (let y = 0; y < numRhombusRows; y++) {
             rectMatrix.push([]);
@@ -72,7 +72,7 @@
     });
 
     const finishAnimation = () => {
-        document.querySelector(".background-rhombi").remove();
+        document.querySelector(".background-bfs-rhombi").remove();
         resolveDefferred();
     };
 

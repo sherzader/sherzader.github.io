@@ -5,14 +5,25 @@
     const windowHeight = window.innerHeight;
     const numRhombusRows = Math.ceil(windowHeight / rhombusHeight);
     const numRhombusCols = Math.ceil(windowWidth / rhombusWidth);
-    const rectMatrix = [];
+    const animatingRectMatrix = [];
 
     const addRhombusElements = () => {
         const main = document.createElement("div");
-        main.classList.add("background", "background-spiral-rhombi");
+        const background = document.createElement("div");
+        background.classList.add(
+            "background",
+            "tileContainer",
+            "background-spiral-rhombi"
+        );
+        main.classList.add(
+            "foreground",
+            "tileContainer",
+            "background-spiral-rhombi"
+        );
 
         for (let y = 0; y < numRhombusRows; y++) {
-            rectMatrix.push([]);
+            animatingRectMatrix.push([]);
+
             for (let x = 0; x < numRhombusCols; x++) {
                 let rhombus = document.createElement("div");
                 rhombus.classList.add("rect");
@@ -24,11 +35,16 @@
                         x};width:${rhombusWidth};height:${rhombusHeight};`
                 );
                 main.appendChild(rhombus);
-                rectMatrix[y].push(rhombus);
+                background.appendChild(rhombus.cloneNode());
+
+                animatingRectMatrix[y].push(rhombus);
             }
         }
-
+        document.body.appendChild(background);
         document.body.appendChild(main);
+        setTimeout(() => {
+            main.style.filter = "none";
+        }, 500);
         runSpiralingTiles();
     };
     const directions = [
@@ -111,7 +127,7 @@
                 transformOrigin = betterDir.transformOrigin;
             }
 
-            rhombus = rectMatrix[newY][newX];
+            rhombus = animatingRectMatrix[newY][newX];
             rhombus.dataset.hasVisited = true;
 
             await transformRhombus(rhombus, transform, transformOrigin);
@@ -154,7 +170,7 @@
             newX <= numRhombusCols - 1 &&
             newY >= 0 &&
             newY <= numRhombusRows - 1 &&
-            !rectMatrix[newY][newX].dataset.hasVisited
+            !animatingRectMatrix[newY][newX].dataset.hasVisited
         );
     };
     const getCenterRhombus = () => {
