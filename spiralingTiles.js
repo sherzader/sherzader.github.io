@@ -98,7 +98,6 @@
                 y = newY;
             } catch (e) {
                 // shhh
-                document.querySelector(".background").remove();
                 return;
             }
             // increment indices to keep track of where you are
