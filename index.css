@@ -3,7 +3,6 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif,
         "Sans Serif", Icons /*!System*/;
-    overflow: hidden;
 }
 
 .tileContainer {
@@ -129,7 +128,7 @@ body {
 nav {
     display: flex;
     justify-content: center;
-    background-color: #c5b7ae;
+    background-color: #aaa895;
     background-size: 400% 400%;
 }
 
@@ -157,23 +156,25 @@ nav > a:hover {
 }
 
 main {
-    position: absolute;
+    /* position: absolute;
     left: 0;
     right: 0;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; */
     margin-top: 2%;
 }
-article {
-    height: 150px;
+section {
     max-width: 574px;
+    max-height: 528px;
+    overflow: scroll;
     margin: 10px auto;
-    padding: 20px 0 0 20px;
+    padding: 20px 0 20px 20px;
     border: 1px solid beige;
     box-shadow: -20px -16px #7d5f55;
     display: flex;
     flex-direction: column;
     background-color: white;
+    height: inherit;
 }
 
 @-webkit-keyframes hoverAni {
@@ -228,4 +229,43 @@ h1.name::after {
     to {
         opacity: 0;
     }
+}
+
+.hipmunk-logo {
+    width: 190px;
+    height: 66px;
+    background-image: url("./images/chippy_header.svg");
+    background-size: cover;
+}
+
+.grid-container {
+    display: grid;
+}
+.grid-item {
+    border-bottom: 1px dotted #7d5f55;
+    padding: 10px 0;
+}
+.grid-item > img {
+    margin: 0 auto;
+    display: flex;
+}
+article {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+}
+footer {
+    display: flex;
+    align-items: center;
+    color: #000;
+    height: 50px;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    border-top: 1px dotted #7d5f55;
+}
+html,
+body {
+    height: 100%;
 }

@@ -40,11 +40,13 @@
                 animatingRectMatrix[y].push(rhombus);
             }
         }
-        document.body.appendChild(background);
-        document.body.appendChild(main);
+        const articleEl = document.querySelector("article");
+        articleEl.appendChild(background);
+        articleEl.appendChild(main);
         setTimeout(() => {
             main.style.filter = "none";
         }, 500);
+
         runSpiralingTiles();
     };
     const directions = [
