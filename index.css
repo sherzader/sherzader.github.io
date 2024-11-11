@@ -15,6 +15,7 @@ body {
 /* tilesBFS.js styles */
 .background-bfs-rhombi {
     top: 0;
+    overflow: hidden;
 }
 
 .background-bfs-rhombi > .rect {
@@ -147,7 +148,7 @@ nav > a {
     animation: hoverAni 3s ease infinite;
 }
 nav > div.border {
-    border: 2px solid #a8a4a1;
+    border: 2px solid #491a21;
     transform: skewX(45deg);
 }
 
@@ -161,19 +162,14 @@ main {
     right: 0;
     margin-left: auto;
     margin-right: auto; */
-    margin-top: 2%;
+    margin-top: 15%;
 }
 section {
-    max-width: 574px;
-    max-height: 528px;
-    overflow: scroll;
+    max-width: 50%;
     margin: 10px auto;
     padding: 20px 0 20px 20px;
-    border: 1px solid beige;
-    box-shadow: -20px -16px #7d5f55;
     display: flex;
     flex-direction: column;
-    background-color: white;
     height: inherit;
 }
 
@@ -242,7 +238,6 @@ h1.name::after {
     display: grid;
 }
 .grid-item {
-    border-bottom: 1px dotted #7d5f55;
     padding: 10px 0;
 }
 .grid-item > img {

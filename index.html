@@ -1,168 +1,62 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale= 1.0,
-            maximum-scale=1.0, user-scalable=no"
-        />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="index.css" />
-        <link
-            href="https://fonts.googleapis.com/css?family=Nunito"
-            rel="stylesheet"
-        />
-        <title>Sheri Zada</title>
-        <meta name="description" content="Sheri Zada's website" />
-        <script defer src="tilesBFS.js"></script>
-        <script defer src="animateName.js"></script>
-    </head>
-    <body>
-        <article>
-            <nav>
-                <div class="border"></div>
-                <a href="#" class="home">Intro</a>
-                <div class="border"></div>
-                <a href="#" class="portfolio">Built</a>
-                <div class="border"></div>
-                <a href="#" class="blog">Blog</a>
-                <div class="border"></div>
-            </nav>
-            <main>
-                <section class="home">
-                    <h1 class="name">Hi I'm Sheri Zada</h1>
-                    <p class="name">
-                        You've made it. You have made it to the most
-                        professional web page on the internet. How does it feel?
-                    </p>
-                    <img src="./images/me.JPG" alt="photo of me" width="150" />
-                    <a href="mailto:sherihzada@gmail.com"
-                        >sherihzada@gmail.com</a
-                    ><br />
-                </section>
-                <section class="blog">
-                    <span>Sunday 12/23/2018</span>
-                    <p>
-                        Where we're going, we don't need blogs.
-                    </p>
-                </section>
-                <section class="portfolio">
-                    <h1>
-                        I'm a web developer, so here are some web apps I've
-                        worked on...
-                    </h1>
-                    <div class="grid-container">
-                        <div class="grid-item">
-                            <img
-                                src="./images/skifree.png"
-                                alt="image from game"
-                                width="300"
-                            />
-                            <p>
-                                I grew up playing a ton of computer games (<a
-                                    href="https://en.wikipedia.org/wiki/Creatures_(video_game_series)"
-                                    >Creatures</a
-                                >
-                                being my favorite), and one of them was this
-                                game about skiing and avoiding obstacles, called
-                                <a
-                                    href="https://en.m.wikipedia.org/wiki/SkiFree"
-                                    >SkiFree</a
-                                >. I couldn't find a JavaScript implementation
-                                of this game on the internet, so I decided to
-                                make one.
-                            </p>
-                            <a href="https://sherzader.github.io/ski-free"
-                                >Care to play the game?</a
-                            >
-                        </div>
-                        <div class="grid-item">
-                            <div class="hipmunk-logo"></div>
-                            <p>
-                                I worked at a travel meta-search site called
-                                Hipmunk from June 2016 to January 2020. The
-                                website is no longer with us, so I am unable
-                                point out live examples.
-                            </p>
-                        </div>
-                        <div class="grid-item">
-                            <p>
-                                The very second web application that I ever
-                                built was a website that replicated the
-                                functionality of the holiday gift exchange game
-                                called
-                                <a
-                                    href="https://en.m.wikipedia.org/wiki/Secret_Santa"
-                                >
-                                    Secret Santa</a
-                                >. The website had user authentication, a
-                                landing page where everyone in the group could
-                                see everyone else's wish list, and a page that
-                                revealed who you had to get a gift for.
-                                <br />Someone received a live fish.
-                            </p>
-                        </div>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale= 1.0,
+            maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
+    <title>Sheri Zada</title>
+    <meta name="description" content="Sheri Zada's website" />
+    <script defer src="tilesBFS.js"></script>
+    <script defer src="animateName.js"></script>
+</head>
+
+<body>
+    <article>
+        <main>
+            <section class="home">
+                <h1 class="name">Hi I'm Sheri Zada</h1>
+                <p class="name">
+                    You've made it. You have made it to the most
+                    professional web page on the internet. How does it feel?
+                </p>
+                <img src="./images/me.JPG" alt="photo of me" width="150" />
+                <a href="mailto:sherihzada@gmail.com">sherihzada@gmail.com</a><br />
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <p>
+                            I grew up playing <i>a few</i> computer games (<a
+                                href="https://en.wikipedia.org/wiki/Creatures_(video_game_series)">Creatures</a>
+                            being my favorite), and another was a
+                            game called
+                            <a href="https://en.m.wikipedia.org/wiki/SkiFree">SkiFree</a> where the player downhill
+                            skied and the goal was to avoid a yeti. I couldn't find a JavaScript implementation
+                            of this game on the internet, so I decided to
+                            make one (a rudimentary version).
+                        </p>
+                        <a href="https://sherzader.github.io/ski-free">Care to play the game?</a>
                     </div>
-                </section>
-            </main>
-            <footer>
-                <p>Sheri Zada made this.</p>
-                <address>
-                    <a href="mailto:sherihzada@gmail.com"
-                        >sherihzada@gmail.com</a
-                    ><br />
-                </address>
-            </footer>
-        </article>
-        <script>
-            const navigate = e => {
-                document.querySelectorAll("section").forEach(element => {
-                    element.style.display = "none";
-                });
-                switch (e.target.innerText) {
-                    case "Intro":
-                        document.querySelector("section.home").style.display =
-                            "";
-                        break;
-                    case "Blog":
-                        document.querySelector("section.blog").style.display =
-                            "";
-                        break;
-                    case "Built":
-                        document.querySelector(
-                            "section.portfolio"
-                        ).style.display = "";
-                        break;
-                    default:
-                        document.querySelector("section.home").style.display =
-                            "";
-                }
-            };
-            document.querySelectorAll("nav a").forEach(element => {
-                element.addEventListener("click", navigate);
-            });
-            document.querySelectorAll("section").forEach(element => {
-                if (!element.classList.contains("home")) {
-                    element.style.display = "none";
-                }
-            });
-        </script>
-        <script>
-            let resolveDefferred, rejectDefferred;
-            const defferred = new Promise((resolve, reject) => {
-                resolveDefferred = resolve;
-                rejectDefferred = reject;
-            });
-            defferred.then(() => {
-                // load next animation
-                const spiralingTiles = document.createElement("script");
-                spiralingTiles.src = "./spiralingTiles.js";
-                document.body.appendChild(spiralingTiles);
-                document.querySelector("nav").style.zIndex = 1;
-                document.querySelector("main").style.zIndex = 1;
-                document.querySelector("footer").style.zIndex = 1;
-            });
-        </script>
-    </body>
+                </div>
+            </section>
+        </main>
+    </article>
+    <script>
+        let resolveDefferred, rejectDefferred;
+        const defferred = new Promise((resolve, reject) => {
+            resolveDefferred = resolve;
+            rejectDefferred = reject;
+        });
+        defferred.then(() => {
+            // load next animation
+            const spiralingTiles = document.createElement("script");
+            spiralingTiles.src = "./spiralingTiles.js";
+            document.body.appendChild(spiralingTiles);
+            document.querySelector("main").style.zIndex = 1;
+        });
+    </script>
+</body>
+
 </html>
